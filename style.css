@@ -1,0 +1,49 @@
+body {
+   font-family: 'Rubik', sans-serif;
+
+   /* variable */
+
+   --color-tomato: #FF6347;
+}
+/* Common */
+
+body .title{
+   font-weight: 400;
+}
+
+body .text-tomato{
+   color: var(--color-tomato);
+}
+
+body .border-color-tomato{
+   border-color: var(--color-tomato) !important;
+}
+
+/* Inherit Bootstrap css */
+.font-weight-bold{
+   font-weight: 500 !important;
+}
+
+/* Form */
+
+
+.search__button:hover{
+   color: var(--color-tomato);
+}
+
+
+/* Table */
+
+.table__label-search{
+   white-space: nowrap;
+}
+
+.table__input-search{
+   height: inherit;
+}
+
+.table__last-col{
+   width: 1%;
+   white-space: nowrap;
+}
+
