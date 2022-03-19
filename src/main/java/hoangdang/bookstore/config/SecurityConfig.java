@@ -10,6 +10,7 @@ package hoangdang.bookstore.config;
 
 import javax.sql.DataSource;
 
+import hoangdang.bookstore.service.impl.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -21,8 +22,6 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-import poly.store.service.UserService;
-import poly.store.service.impl.UserDetailsServiceImpl;
 
 /**
  * Class dung de phan quyen cho project
