@@ -55,7 +55,6 @@
 									<th>Email</th>
 									<th>Họ và tên</th>
 									<th>Giới tính</th>
-									<th>Bản tin</th>
 									<th>Ngày sinh</th>
 									<th>Hoạt động</th>
 								</tr>
@@ -65,7 +64,6 @@
 									<th>Email</th>
 									<th>Họ và tên</th>
 									<th>Giới tính</th>
-									<th>Bản tin</th>
 									<th>Ngày sinh</th>
 									<th>Hoạt động</th>
 								</tr>
@@ -76,8 +74,6 @@
 									<td>{{item.fullname}}</td>
 									<td ng-if="item.sex == 0">Nữ</td>
 									<td ng-if="item.sex == 1">Nam</td>
-									<td ng-if="item.subscribe == 0">Không</td>
-									<td ng-if="item.subscribe == 1">Có</td>
 									<td>{{item.birthday | date:'dd/MM/yyyy'}}</td>
 									<td><a ng-click="update(item)"
 										class="btn btn-sm btn-icon btn-pure btn-default on-default edit-row"

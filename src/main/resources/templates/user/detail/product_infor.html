@@ -169,7 +169,8 @@
 							<div class="btn-groups pro-btns">
 								<button type="submit" id="button-cart"
 									data-loading-text="Loading..."
-									class="btn btn-primary btn-lg btn-block">Thêm vào giỏ</button>
+									class="btn btn-primary btn-lg btn-block"
+									th:disabled="${quantity}">Thêm vào giỏ</button>
 								<button class="pro_wish" id="favorite" type="button"
 									th:onclick="addFavorite([(${inforProduct.id})])"
 									title="Yêu thích">
