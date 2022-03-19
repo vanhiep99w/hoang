@@ -10,8 +10,6 @@ package hoangdang.bookstore.config;
 
 import javax.sql.DataSource;
 
-import hoangdang.bookstore.service.UserService;
-import hoangdang.bookstore.service.impl.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -23,31 +21,28 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+import poly.store.service.UserService;
+import poly.store.service.impl.UserDetailsServiceImpl;
+
 /**
  * Class dung de phan quyen cho project
+ * 
+ * @author khoa-ph
  * @version 1.00
  */
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	// Thong tin User Service
-	@Autowired
-    UserService userService;
 
-	// Phuong thuc ma hoa mat khau
-	@Autowired
-	BCryptPasswordEncoder pe;
 
 	// Phuong thuc cap quyen
 	@Autowired
 	private UserDetailsServiceImpl userDetailsService;
 
-	// Thong tin datasource
-	@Autowired
-	DataSource dataSource;
-
 	/**
 	 * Cung cap quyen cho project
+	 * 
 	 * @param auth
 	 * @throws Exception
 	 */
@@ -58,18 +53,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	/**
 	 * Xu ly phan quyen nguoi dung
+	 * 
 	 * @param http
-	 * @throws
 	 */
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.csrf().disable();
 
 		// Cac trang yeu cau quyen su dung la Admin hoac Director
-		http.authorizeRequests().antMatchers("/admin/**").access("hasAnyRole('ROLE_ADMIN')");
+		http.authorizeRequests().antMatchers("/admin/**").access("hasAnyRole('ROLE_ADMIN', 'ROLE_DIRECTOR')");
 
 		http.authorizeRequests().antMatchers("/shop/profile/**","/shop/favorite/**" ,"/shop/cart/checkout", "/account", "/account/**", "/rest/favorite/add/**")
-		.access("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')");
+		.access("hasAnyRole('ROLE_USER', 'ROLE_ADMIN', 'ROLE_DIRECTOR')");
 		
 		// Các trang không yêu cầu login
 		http.authorizeRequests().anyRequest().permitAll();
@@ -92,6 +87,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	/**
 	 * Cung cap phuong thuc ma hoa
+	 * 
 	 * @return phuong thuc ma hoa
 	 */
 	@Bean
