@@ -22,11 +22,11 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+import hoangdang.bookstore.service.UserService;
+import hoangdang.bookstore.service.impl.UserDetailsServiceImpl;
 
 /**
  * Class dung de phan quyen cho project
- * 
- * @author khoa-ph
  * @version 1.00
  */
 @Configuration
@@ -60,10 +60,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		http.csrf().disable();
 
 		// Cac trang yeu cau quyen su dung la Admin hoac Director
-		http.authorizeRequests().antMatchers("/admin/**").access("hasAnyRole('ROLE_ADMIN', 'ROLE_DIRECTOR')");
+		http.authorizeRequests().antMatchers("/admin/**").access("hasAnyRole('ROLE_ADMIN')");
 
 		http.authorizeRequests().antMatchers("/shop/profile/**","/shop/favorite/**" ,"/shop/cart/checkout", "/account", "/account/**", "/rest/favorite/add/**")
-		.access("hasAnyRole('ROLE_USER', 'ROLE_ADMIN', 'ROLE_DIRECTOR')");
+		.access("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')");
 		
 		// Các trang không yêu cầu login
 		http.authorizeRequests().anyRequest().permitAll();
