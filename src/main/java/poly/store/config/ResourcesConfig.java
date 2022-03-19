@@ -13,6 +13,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 
+
 /**
  * Class chua cac cau hinh cho he thong
  * 
@@ -35,4 +36,5 @@ public class ResourcesConfig {
 		ms.setDefaultEncoding("UTF-8");
 		return ms;
 	}
+
 }

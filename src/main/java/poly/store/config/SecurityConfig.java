@@ -34,20 +34,11 @@ import poly.store.service.impl.UserDetailsServiceImpl;
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	// Thong tin User Service
-	@Autowired
-	UserService userService;
 
-	// Phuong thuc ma hoa mat khau
-	@Autowired
-	BCryptPasswordEncoder pe;
 
 	// Phuong thuc cap quyen
 	@Autowired
 	private UserDetailsServiceImpl userDetailsService;
-
-	// Thong tin datasource
-	@Autowired
-	DataSource dataSource;
 
 	/**
 	 * Cung cap quyen cho project
@@ -64,7 +55,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	 * Xu ly phan quyen nguoi dung
 	 * 
 	 * @param http
-	 * @throws exception
 	 */
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
